@@ -110,10 +110,9 @@ namespace DroneManagmentAPI.Models.Repository
 
             if(droneAvailable != null)
             {
-                // change drone state to loading 
-                var loadingState = (int)State.LOADING;
-                droneAvailable.State = loadingState;
-                _droneContext.SaveChanges();
+                //var loadingState = (int)State.LOADING;
+                //droneAvailable.State = loadingState;
+                //_droneContext.SaveChanges();
                 return true;
             }
             else
