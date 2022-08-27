@@ -3,6 +3,7 @@ using DroneManagmentAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DroneManagmentAPI.Migrations
 {
     [DbContext(typeof(DroneContext))]
-    partial class DroneContextModelSnapshot : ModelSnapshot
+    [Migration("20220827011229_alter table drone alter state and model to int")]
+    partial class altertabledronealterstateandmodeltoint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

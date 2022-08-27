@@ -7,8 +7,6 @@ namespace DroneManagmentAPI.Models
     {
         public Drone()
         {
-            Model = "";
-            State = "";
             SerialNumber = "";
         }
         [Key]
@@ -18,7 +16,7 @@ namespace DroneManagmentAPI.Models
         [MaxLength(100)]
         public string SerialNumber  { get; set; }
         [Required]
-        public string Model { get; set; }
+        public int Model { get; set; }
         [Required]
         [Column(TypeName = "decimal(5,2)")]
         [Range(typeof(decimal), "0", "500")]
@@ -28,6 +26,6 @@ namespace DroneManagmentAPI.Models
         [Range(typeof(decimal), "0", "100")]
         public decimal BatteryCapacity  { get; set; }
         [Required]
-        public string State  { get; set; }
+        public int State  { get; set; }
     }
 }

@@ -1,8 +1,15 @@
+using DroneManagmentAPI.Models;
+using DroneManagmentAPI.Models.Repository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
+builder.Services.AddDbContext<DroneContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+
+builder.Services.AddScoped<DroneRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
