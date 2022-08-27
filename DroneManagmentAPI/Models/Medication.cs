@@ -21,7 +21,7 @@ namespace DroneManagmentAPI.Models
         public decimal  Weight { get; set; }
         [Required]
 
-        [RegularExpression("[A-Z0-9_]+")]
+        [RegularExpression("[A-Z0-9_]*")]
         public string Code { get; set; }
         [Required]
         public string Image { get; set; }
