@@ -11,6 +11,7 @@ builder.Services.AddDbContext<DroneContext>(option => option.UseSqlServer(builde
 
 builder.Services.AddScoped<DroneRepository>();
 builder.Services.AddScoped<MedicationRepository>();
+builder.Services.AddScoped<DispatchRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -14,7 +14,7 @@ namespace DroneManagmentAPI.Models
         public int Drone_ID { get; set; }
         [ForeignKey("Medication")]
         public int Medication_ID { get; set; }
-        public string State { get; set; }
+        public int State { get; set; }
         public virtual Drone Drone { get; set; } 
         public virtual Medication Medication { get; set; }
     }

@@ -32,14 +32,14 @@ namespace DroneManagmentAPI.Controllers
         }
 
         [HttpPost]
-        [Route("SaveDrone")]
+        [Route("SaveMedication")]
         public IActionResult SaveDrone([FromBody] Medication medication)
         {
 
             return Ok(_medRepository.SaveMedication(medication));
         }
         [HttpDelete]
-        [Route("DeleteDrone")]
+        [Route("DeleteMedication")]
         public IActionResult DeleteDrone(int id)
         {
             return Ok(_medRepository.DeleteMedication(id));
