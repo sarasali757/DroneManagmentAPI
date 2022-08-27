@@ -70,7 +70,10 @@ namespace DroneManagmentAPI.Models.Repository
 
         public bool DeleteDrone(int id)
         {
-            try { 
+            /*add validation id drone attached to med */
+
+            try
+            { 
                 var drone = (from drn in _droneContext.Drones
                              where drn.ID == id
                              select drn).FirstOrDefault();

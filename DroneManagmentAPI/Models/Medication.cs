@@ -14,7 +14,7 @@ namespace DroneManagmentAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
-        [RegularExpression("[w-]+" )]
+        [RegularExpression("[A-Za-z_-]*")]
         public string Name { get; set; }
         [Required]
         [Column(TypeName = "decimal(5,2)")]
