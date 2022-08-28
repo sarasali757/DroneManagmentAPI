@@ -1,19 +1,19 @@
-##Drone Managment
+# Drone Managment
 
-##Contents: 
+## Contents: 
   1- Description 
   2-Getting started 
   3- API Manual 
   4- Sample request/response 
 
-##Description 
+## Description 
   -the following project is a RestFULL API implmented using .net core 6
 
-##Getting Started 
+## Getting Started 
   1- We need to have Visual Stuido 2022 
   2- we need to have Microsoft sql server 2019 
 
-##API Manual 
+## API Manual 
   *This API do the following functionality: 
   1- Add/Edit Drone 
   2- Get All Drones 
@@ -28,7 +28,7 @@
   11- Periodic task check on Drone's battery level 
   12- Swagger UI /swagger/index.html
   
-  ##Sample 
+  ## Sample 
     *Request : POST  '/api/Dispatch/LoadDrone'
       ![]  {
         "droneId": 1,
