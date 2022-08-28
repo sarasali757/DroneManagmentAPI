@@ -1,3 +1,44 @@
-this is application contains the following:
+##Drone Managment
 
-ASP.net Core WebAPI build as REST backend.
+##Contents: 
+  1- Description 
+  2-Getting started 
+  3- API Manual 
+  4- Sample request/response 
+
+##Description 
+  -the following project is a RestFULL API implmented using .net core 6
+
+##Getting Started 
+  1- We need to have Visual Stuido 2022 
+  2- we need to have Microsoft sql server 2019 
+
+##API Manual 
+  *This API do the following functionality: 
+  1- Add/Edit Drone 
+  2- Get All Drones 
+  3- Get All availables Drones 
+  4- Get specific drone by Id
+  5- Add/Edit Medication 
+  6- Get All Medications 
+  7- Get Medication by Id
+  8- Load Drone with Medications 
+  9- Get Loaded Drone Details
+  10- Change Drone State 
+  11- Periodic task check on Drone's battery level 
+  12- Swagger UI /swagger/index.html
+  
+  ##Sample 
+    *Request : POST  '/api/Dispatch/LoadDrone'
+      ![]  {
+        "droneId": 1,
+        "medicationsId": [
+          1,
+          2
+        ]
+      }
+      
+      *Response :
+       Code : 200 , response body: true
+
+  
