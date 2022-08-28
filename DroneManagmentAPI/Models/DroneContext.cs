@@ -14,6 +14,7 @@ namespace DroneManagmentAPI.Models
         public virtual DbSet<Drone> Drones { get; set; }
         public virtual DbSet<Medication> Medications { get; set; }
         public virtual DbSet<DroneMedications> DroneMedications { get; set; }
+        public virtual DbSet<BatteryLog> BatteryLog { get; set; }
 
         public DroneContext(DbContextOptions<DroneContext> options)
             : base(options)

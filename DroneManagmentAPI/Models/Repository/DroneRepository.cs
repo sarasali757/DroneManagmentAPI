@@ -85,5 +85,23 @@ namespace DroneManagmentAPI.Models.Repository
                 return false;
             }
         }
+        public bool CheckDroneBattery()
+        {
+            try {
+                var batteryLogs = (from drone in _droneContext.Drones
+                                   select new BatteryLog()
+                                   {
+                                       Drone_ID = drone.ID ,
+                                       BatteryLevel = drone.BatteryCapacity ,
+                                       TimeLog = DateTime.Now 
+                                   }).ToList();
+
+                _droneContext.BatteryLog.AddRange(batteryLogs);
+                return true;
+            }
+            catch (Exception) {
+                return false; 
+            }
+        }
     }
 }

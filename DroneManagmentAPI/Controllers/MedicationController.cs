@@ -1,7 +1,9 @@
-﻿using DroneManagmentAPI.Models;
+﻿using BrunoZell.ModelBinding;
+using DroneManagmentAPI.Models;
 using DroneManagmentAPI.Models.Repository;
-using Microsoft.AspNetCore.Http;
+using DroneManagmentAPI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace DroneManagmentAPI.Controllers
 {
@@ -9,7 +11,8 @@ namespace DroneManagmentAPI.Controllers
     [ApiController]
     public class MedicationController : ControllerBase
     {
-        MedicationRepository _medRepository;
+        private readonly MedicationRepository _medRepository;
+
         public MedicationController(MedicationRepository medicationRepository)
         {
             _medRepository = medicationRepository;
@@ -33,16 +36,21 @@ namespace DroneManagmentAPI.Controllers
 
         [HttpPost]
         [Route("SaveMedication")]
-        public IActionResult SaveDrone([FromBody] Medication medication)
+        public IActionResult SaveMedication( IFormFile File, [FromForm] string jsonString)
         {
+            //"{'id': 3,'name': 'medA','weight': 20,'code': '1234HI','image': 'path'}"
+            var myObj = JsonConvert.DeserializeObject<MedicationViewModel>(jsonString);
 
-            return Ok(_medRepository.SaveMedication(medication));
+            return Ok(_medRepository.SaveMedication(new Medication(), File));
         }
         [HttpDelete]
         [Route("DeleteMedication")]
-        public IActionResult DeleteDrone(int id)
+        public IActionResult DeleteMedication(int id)
         {
             return Ok(_medRepository.DeleteMedication(id));
         }
+
+     
     }
+
 }

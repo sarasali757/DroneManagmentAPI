@@ -1,11 +1,16 @@
-﻿namespace DroneManagmentAPI.Models.Repository
+﻿using DroneManagmentAPI.ViewModels;
+using Microsoft.AspNetCore.Http;
+namespace DroneManagmentAPI.Models.Repository
 {
     public class MedicationRepository
     {
         readonly DroneContext _droneContext;
-        public MedicationRepository(DroneContext droneContext)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public MedicationRepository(DroneContext droneContext, IWebHostEnvironment webHostEnvironment)
         {
             _droneContext = droneContext;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public List<Medication> GetAllMedications()
@@ -14,7 +19,7 @@
                     select med ).ToList();
         }
 
-        public bool SaveMedication(Medication medEntity)
+        public bool SaveMedication(Medication medEntity ,IFormFile file)
         {
             /*need logic for saving image */
             try
@@ -25,13 +30,20 @@
 
                 if (medication == null) // add new med
                 {
-                    _droneContext.Medications.Add(medEntity);
+                    var imagePath = UploadedFile(file);
+                    _droneContext.Medications.Add(new Medication()
+                    {
+                        Name = medEntity.Name,
+                        Weight = medEntity.Weight,
+                        Code = medEntity.Code,
+                        Image = medEntity.Image 
+                    });
                 }
                 else // edit med
                 {
                     medication.Name = medEntity.Name; 
                     medication.Weight = medEntity.Weight; 
-                    medication.Code = medEntity.Code; 
+                    medication.Code = medEntity.Code;
                     medication.Image = medEntity.Image; 
                 }
                 _droneContext.SaveChanges();
@@ -75,7 +87,21 @@
                 return false;
             }
         }
-
+        public string UploadedFile(IFormFile file)
+        {
+            string uniqueFileName = null;
+            if (file != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.ContentRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
+        }
 
     }
 }
