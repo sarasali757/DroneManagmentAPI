@@ -36,12 +36,12 @@ namespace DroneManagmentAPI.Controllers
 
         [HttpPost]
         [Route("SaveMedication")]
-        public IActionResult SaveMedication( IFormFile File, [FromForm] string jsonString)
+        public IActionResult SaveMedication( IFormFile File, [FromForm] Medication medication)
         {
             //"{'id': 3,'name': 'medA','weight': 20,'code': '1234HI','image': 'path'}"
-            var myObj = JsonConvert.DeserializeObject<MedicationViewModel>(jsonString);
+            //var myObj = JsonConvert.DeserializeObject<MedicationViewModel>(jsonString);
 
-            return Ok(_medRepository.SaveMedication(new Medication(), File));
+            return Ok(_medRepository.SaveMedication(medication, File));
         }
         [HttpDelete]
         [Route("DeleteMedication")]

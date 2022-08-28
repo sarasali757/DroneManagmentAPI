@@ -36,7 +36,7 @@ namespace DroneManagmentAPI.Models.Repository
                         Name = medEntity.Name,
                         Weight = medEntity.Weight,
                         Code = medEntity.Code,
-                        Image = medEntity.Image 
+                        Image = imagePath
                     });
                 }
                 else // edit med
@@ -44,7 +44,9 @@ namespace DroneManagmentAPI.Models.Repository
                     medication.Name = medEntity.Name; 
                     medication.Weight = medEntity.Weight; 
                     medication.Code = medEntity.Code;
-                    medication.Image = medEntity.Image; 
+                    var deleteOldImg = DeleteFile(medication.Image);
+                    medication.Image = UploadedFile(file);
+                   
                 }
                 _droneContext.SaveChanges();
                 return true;
@@ -102,6 +104,18 @@ namespace DroneManagmentAPI.Models.Repository
             }
             return uniqueFileName;
         }
-
+        public bool DeleteFile(string fileName)
+        {
+            try {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.ContentRootPath, "images");
+                string filePath = Path.Combine(uploadsFolder, fileName);
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+                return true;
+            }
+            catch (Exception) { return false; }
+        }
     }
 }
