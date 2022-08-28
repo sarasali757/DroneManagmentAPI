@@ -72,23 +72,23 @@ namespace DroneManagmentAPI.Models.Repository
             }
         }
 
-        public bool DeleteMedication(int id)
-        {
-            /*add validation id med attached to drone */
-            try
-            {
-                var medication = (from med in _droneContext.Medications
-                             where med.ID == id
-                             select med).FirstOrDefault();
-                _droneContext.Medications.Remove(medication);
-                _droneContext.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
+        //public bool DeleteMedication(int id)
+        //{
+        //    /*add validation id med attached to drone */
+        //    try
+        //    {
+        //        var medication = (from med in _droneContext.Medications
+        //                     where med.ID == id
+        //                     select med).FirstOrDefault();
+        //        _droneContext.Medications.Remove(medication);
+        //        _droneContext.SaveChanges();
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return false;
+        //    }
+        //}
         public string UploadedFile(IFormFile file)
         {
             string uniqueFileName = null;

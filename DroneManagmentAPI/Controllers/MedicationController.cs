@@ -38,17 +38,14 @@ namespace DroneManagmentAPI.Controllers
         [Route("SaveMedication")]
         public IActionResult SaveMedication( IFormFile File, [FromForm] Medication medication)
         {
-            //"{'id': 3,'name': 'medA','weight': 20,'code': '1234HI','image': 'path'}"
-            //var myObj = JsonConvert.DeserializeObject<MedicationViewModel>(jsonString);
-
             return Ok(_medRepository.SaveMedication(medication, File));
         }
-        [HttpDelete]
-        [Route("DeleteMedication")]
-        public IActionResult DeleteMedication(int id)
-        {
-            return Ok(_medRepository.DeleteMedication(id));
-        }
+        //[HttpDelete]
+        //[Route("DeleteMedication")]
+        //public IActionResult DeleteMedication(int id)
+        //{
+        //    return Ok(_medRepository.DeleteMedication(id));
+        //}
 
      
     }

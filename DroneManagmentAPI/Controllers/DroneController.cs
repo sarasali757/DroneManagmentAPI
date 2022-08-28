@@ -43,11 +43,11 @@ namespace DroneManagmentAPI.Controllers
 
             return Ok(_droneRepository.SaveDrone(drone));
         }
-        [HttpDelete]
-        [Route("DeleteDrone")]
-        public IActionResult DeleteDrone(int id)
-        {
-            return Ok(_droneRepository.DeleteDrone(id));
-        }
+        //[HttpDelete]
+        //[Route("DeleteDrone")]
+        //public IActionResult DeleteDrone(int id)
+        //{
+        //    return Ok(_droneRepository.DeleteDrone(id));
+        //}
     }
 }

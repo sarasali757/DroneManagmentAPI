@@ -68,23 +68,23 @@ namespace DroneManagmentAPI.Models.Repository
             }
         }
 
-        public bool DeleteDrone(int id)
-        {
-            /*add validation id drone attached to med */
+        //public bool DeleteDrone(int id)
+        //{
+        //    /*add validation id drone attached to med */
 
-            try
-            { 
-                var drone = (from drn in _droneContext.Drones
-                             where drn.ID == id
-                             select drn).FirstOrDefault();
-                _droneContext.Drones.Remove(drone);
-                _droneContext.SaveChanges();
-                return true;
-            }
-            catch (Exception ex) {
-                return false;
-            }
-        }
+        //    try
+        //    { 
+        //        var drone = (from drn in _droneContext.Drones
+        //                     where drn.ID == id
+        //                     select drn).FirstOrDefault();
+        //        _droneContext.Drones.Remove(drone);
+        //        _droneContext.SaveChanges();
+        //        return true;
+        //    }
+        //    catch (Exception ex) {
+        //        return false;
+        //    }
+        //}
         public bool CheckDroneBattery()
         {
             try {
